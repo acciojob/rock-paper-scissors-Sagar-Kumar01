@@ -47,14 +47,21 @@ paper.addEventListener("click", () => {
       round_result.textContent = "TIE";
     } else if (paper.value === "PAPER" && bot === "ROCK") 
 	{
-      round_result.textContent = "You WIN! 🎉";
+      round_result.textContent = "WON";
+	  userPoint+=1;
+		user_points.textContent = userPoint;
     } else {
-      round_result.textContent = "You LOSE 😢";
+      round_result.textContent = "LOSE";
+	  computerPoint+=1;
+		computer_points.textContent = computerPoint;
     }
 
     turnLeft -= 1;
     rounds_left.textContent = turnLeft;
   }
+	if(turnLeft == 0){
+		resultshow(userPoint,computerPoint)
+	}
 });
 
 rock.addEventListener("click", () => {
@@ -66,14 +73,21 @@ rock.addEventListener("click", () => {
       round_result.textContent = "TIE";
     } else if (rock.value === "ROCK" && bot === "SCISSORS") 
 	{
-      round_result.textContent = "You WIN! 🎉";
+      round_result.textContent = "WON";
+		userPoint+=1;
+		user_points.textContent = userPoint;
     } else {
-      round_result.textContent = "You LOSE 😢";
+      round_result.textContent = "LOSE";
+		computerPoint+=1;
+		computer_points.textContent = computerPoint;
     }
 
     turnLeft -= 1;
     rounds_left.textContent = turnLeft;
   }
+	if(turnLeft == 0){
+		resultshow(userPoint,computerPoint)
+	}
 });
 
 scissor.addEventListener("click", () => {
@@ -86,12 +100,29 @@ scissor.addEventListener("click", () => {
     } else if (
       (scissor.value === "SCISSORS" && bot === "PAPER")
     ) {
-      round_result.textContent = "You WIN! 🎉";
+      round_result.textContent = "WON";
+		userPoint+=1;
+		user_points.textContent = userPoint;
     } else {
-      round_result.textContent = "You LOSE 😢";
+      round_result.textContent = "LOSE";
+		computerPoint+=1;
+		computer_points.textContent = computerPoint;
     }
 
     turnLeft -= 1;
     rounds_left.textContent = turnLeft;
   }
+	if(turnLeft == 0){
+		resultshow(userPoint,computerPoint)
+	}
 });
+
+function resultshow(i,j) {
+	if(i>j){
+		game_result.textContent = "WON"
+	}else if(i<j){
+		game_result.textContent = "LOSE"
+	}else{
+		game_result.textContent = "TIE"
+	}
+}
